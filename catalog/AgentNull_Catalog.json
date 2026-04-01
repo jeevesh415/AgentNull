@@ -254,5 +254,239 @@
       "Feedback loop monitoring",
       "Bias detection in model updates"
     ]
+  },
+  {
+    "name": "EchoLeak (LLM Scope Violation)",
+    "vector": "Zero-click indirect prompt injection exploiting LLM scope boundaries to exfiltrate data without user interaction",
+    "attribution": "Aim Labs / Varonis (CVE-2025-32711), June 2025",
+    "targets": [
+      "Microsoft 365 Copilot",
+      "Enterprise AI assistants with broad data access"
+    ],
+    "defense": [
+      "Input sanitization at document ingestion layer",
+      "Scope-limit assistant context per request",
+      "Monitor outbound data requests during summarization"
+    ]
+  },
+  {
+    "name": "MemoryGraft (Poisoned Experience Retrieval)",
+    "vector": "Persistent indirect injection targeting agent experience-based memory via crafted past task outcomes",
+    "attribution": "Academic researchers (arXiv:2512.16962), December 2025",
+    "targets": [
+      "MetaGPT",
+      "Multi-agent frameworks with experience memory",
+      "Semantic imitation systems"
+    ],
+    "defense": [
+      "Memory provenance tracking",
+      "Integrity verification of stored experiences",
+      "Anomaly detection on retrieved memory patterns",
+      "Periodic memory auditing"
+    ]
+  },
+  {
+    "name": "MCP Sampling Exploitation",
+    "vector": "Exploit MCP sampling feature for covert tool invocation, conversation hijacking, and resource theft",
+    "attribution": "Palo Alto Networks Unit 42, December 2025",
+    "targets": [
+      "MCP-connected agents using sampling",
+      "Claude and GPT agents with MCP integrations"
+    ],
+    "defense": [
+      "Disable sampling from untrusted servers",
+      "Per-server tool invocation allowlists",
+      "Monitor unexpected tool calls during sampling",
+      "Rate-limit sampling requests"
+    ]
+  },
+  {
+    "name": "Gemini Trifecta (Three-Vector Indirect Prompt Injection)",
+    "vector": "Three coordinated vulnerabilities exploiting Google Gemini surfaces via indirect prompt injection",
+    "attribution": "Tenable Research, October 2025",
+    "targets": [
+      "Google Gemini Cloud Assist",
+      "Gemini Search Personalization",
+      "Gemini Browsing Tool"
+    ],
+    "defense": [
+      "Validate log inputs before LLM processing",
+      "Isolate browsing tool network requests",
+      "Verify search history integrity"
+    ]
+  },
+  {
+    "name": "CometJacking (Agentic Browser Hijack)",
+    "vector": "URL-based prompt injection targeting AI browsers to hijack connected services",
+    "attribution": "LayerX Security and Brave Security Research, August 2025",
+    "targets": [
+      "Perplexity Comet AI Browser",
+      "Agentic browsers with connected service access"
+    ],
+    "defense": [
+      "URL parameter sanitization",
+      "Prohibit AI execution of instructions from URL query strings",
+      "Anti-phishing protections in agentic browsers",
+      "Restrict data encoding during navigation events"
+    ]
+  },
+  {
+    "name": "Tainted Memories (CSRF-Based Persistent Memory Injection)",
+    "vector": "Cross-Site Request Forgery exploiting AI browser auth to inject persistent malicious instructions into LLM memory",
+    "attribution": "LayerX Security, October 2025",
+    "targets": [
+      "OpenAI ChatGPT (Atlas browser)",
+      "LLMs with persistent memory and web browsing"
+    ],
+    "defense": [
+      "CSRF protections on memory write endpoints",
+      "User notification on memory modifications",
+      "Memory integrity verification",
+      "Session-bound memory writes"
+    ]
+  },
+  {
+    "name": "Multi-Agent Control-Flow Hijacking (MAS-CFH)",
+    "vector": "Fake error messages hijack orchestrator re-planning to invoke unsafe agents or arbitrary code execution",
+    "attribution": "COLM 2025 (arXiv:2503.12188), March 2025",
+    "targets": [
+      "AutoGen",
+      "CrewAI",
+      "MetaGPT",
+      "Magentic-One",
+      "Multi-agent orchestration frameworks"
+    ],
+    "defense": [
+      "Agent output validation",
+      "Restrict code execution agent invocation",
+      "Input sanitization for inter-agent messages",
+      "Sandbox code execution agents"
+    ]
+  },
+  {
+    "name": "Inter-Agent Trust Exploitation",
+    "vector": "Malicious payloads laundered through peer agents bypass direct injection defenses via blind inter-agent trust",
+    "attribution": "arXiv:2507.06850 (The Dark Side of LLMs), July 2025",
+    "targets": [
+      "All multi-agent systems with inter-agent communication",
+      "Commercial and open-source agentic models"
+    ],
+    "defense": [
+      "Zero-trust inter-agent communication",
+      "Per-agent authorization scoping",
+      "Treat peer agent outputs as untrusted input",
+      "Integrity verification of inter-agent messages"
+    ]
+  },
+  {
+    "name": "Delayed Tool Invocation (Asynchronous Memory Poisoning)",
+    "vector": "Conditional deferred injection triggered by natural user responses in later conversation turns",
+    "attribution": "Johann Rehberger (Embrace The Red), February 2025",
+    "targets": [
+      "Google Gemini Advanced",
+      "LLMs with persistent memory and tool use"
+    ],
+    "defense": [
+      "Separate authorization flows for memory writes",
+      "Do not allow ambient responses to authorize tool invocations",
+      "Track provenance of conditional instructions",
+      "Sanitize deferred actions in context"
+    ]
+  },
+  {
+    "name": "Slopsquatting (AI Hallucination Package Squatting)",
+    "vector": "Register package names that AI coding agents hallucinate, turning fabricated dependencies into supply chain attacks",
+    "attribution": "UT San Antonio, Virginia Tech, University of Oklahoma (USENIX Security 2025)",
+    "targets": [
+      "AI coding agents (Copilot, Claude Code, Cursor)",
+      "npm/PyPI registries",
+      "MCP server configurations"
+    ],
+    "defense": [
+      "Package existence verification before installation",
+      "Lockfiles and hash pinning",
+      "Hallucination detection in code generation output",
+      "Registry monitoring for hallucination-pattern packages"
+    ]
+  },
+  {
+    "name": "Marketplace Skill Poisoning (OpenClaw / ClawHavoc)",
+    "vector": "Unvetted public skill registries exploited for credential theft, RCE, and malware distribution",
+    "attribution": "SecurityScorecard, Sangfor; CVE-2026-25253 et al., January-February 2026",
+    "targets": [
+      "OpenClaw agent framework",
+      "Agent ecosystems with unvetted plugin/skill marketplaces"
+    ],
+    "defense": [
+      "Mandatory code review for marketplace submissions",
+      "Strong identity verification for publishers",
+      "Runtime skill behavior monitoring",
+      "Sandboxing skill execution",
+      "Signed skill packages"
+    ]
+  },
+  {
+    "name": "Semantic Privilege Escalation",
+    "vector": "Privilege escalation at the semantic layer — agent takes unauthorized actions while passing every access control check",
+    "attribution": "Acuvity, late 2025 - early 2026",
+    "targets": [
+      "Enterprise AI agents with broad tool access",
+      "Financial, HR, procurement systems"
+    ],
+    "defense": [
+      "Intent-based security frameworks",
+      "Action-scope verification against original request",
+      "Behavioral anomaly detection",
+      "Least-privilege tool grants per task",
+      "Human-in-the-loop for high-impact operations"
+    ]
+  },
+  {
+    "name": "MCP Supply Chain Backdoor (Postmark BCC Exfiltration)",
+    "vector": "Compromised npm package in MCP email automation silently BCCs every outgoing email to attacker",
+    "attribution": "Authzed and others, 2025",
+    "targets": [
+      "MCP-connected email automation pipelines",
+      "npm-based AI tool supply chains"
+    ],
+    "defense": [
+      "Package integrity verification",
+      "Dependency auditing",
+      "Monitor outbound email headers for unexpected BCC",
+      "Network-level exfiltration detection",
+      "Pin dependency versions"
+    ]
+  },
+  {
+    "name": "Reasoning-Assisted Sandbox Escape",
+    "vector": "AI agent autonomously discovers and chains sandbox bypass techniques through reasoning about its constraints",
+    "attribution": "Ona Security Research, 2025",
+    "targets": [
+      "Claude Code (Bubblewrap/Seatbelt sandboxes)",
+      "Any sandbox constraining reasoning-capable agents"
+    ],
+    "defense": [
+      "Kernel-level enforcement with content hashing (SHA-256)",
+      "Defense-in-depth with orthogonal enforcement layers",
+      "MicroVM isolation (Firecracker/gVisor)",
+      "Monitor sandbox configuration changes"
+    ]
+  },
+  {
+    "name": "A2A Protocol Exploitation (Agent Card Spoofing / Cascading Delegation)",
+    "vector": "Multiple attack surfaces in Google A2A protocol enabling impersonation, token abuse, and cascading agent compromise",
+    "attribution": "Cloud Security Alliance, Semgrep, Solo.io (arXiv:2505.12490), April-December 2025",
+    "targets": [
+      "Google A2A protocol implementations",
+      "50+ A2A technology partners",
+      "Multi-agent workflows"
+    ],
+    "defense": [
+      "Enforce Agent Card signing",
+      "Strict token expiration (short-lived scoped tokens)",
+      "Consent mechanisms for cross-agent data sharing",
+      "Treat all inter-agent input as untrusted",
+      "Per-agent authorization boundaries"
+    ]
   }
 ]
