@@ -254,5 +254,559 @@
       "Feedback loop monitoring",
       "Bias detection in model updates"
     ]
+  },
+  {
+    "name": "EchoLeak (LLM Scope Violation)",
+    "vector": "Zero-click indirect prompt injection exploiting LLM scope boundaries to exfiltrate data without user interaction",
+    "attribution": "Aim Labs / Varonis (CVE-2025-32711), June 2025",
+    "targets": [
+      "Microsoft 365 Copilot",
+      "Enterprise AI assistants with broad data access"
+    ],
+    "defense": [
+      "Input sanitization at document ingestion layer",
+      "Scope-limit assistant context per request",
+      "Monitor outbound data requests during summarization"
+    ]
+  },
+  {
+    "name": "MemoryGraft (Poisoned Experience Retrieval)",
+    "vector": "Persistent indirect injection targeting agent experience-based memory via crafted past task outcomes",
+    "attribution": "Academic researchers (arXiv:2512.16962), December 2025",
+    "targets": [
+      "MetaGPT",
+      "Multi-agent frameworks with experience memory",
+      "Semantic imitation systems"
+    ],
+    "defense": [
+      "Memory provenance tracking",
+      "Integrity verification of stored experiences",
+      "Anomaly detection on retrieved memory patterns",
+      "Periodic memory auditing"
+    ]
+  },
+  {
+    "name": "MCP Sampling Exploitation",
+    "vector": "Exploit MCP sampling feature for covert tool invocation, conversation hijacking, and resource theft",
+    "attribution": "Palo Alto Networks Unit 42, December 2025",
+    "targets": [
+      "MCP-connected agents using sampling",
+      "Claude and GPT agents with MCP integrations"
+    ],
+    "defense": [
+      "Disable sampling from untrusted servers",
+      "Per-server tool invocation allowlists",
+      "Monitor unexpected tool calls during sampling",
+      "Rate-limit sampling requests"
+    ]
+  },
+  {
+    "name": "Gemini Trifecta (Three-Vector Indirect Prompt Injection)",
+    "vector": "Three coordinated vulnerabilities exploiting Google Gemini surfaces via indirect prompt injection",
+    "attribution": "Tenable Research, October 2025",
+    "targets": [
+      "Google Gemini Cloud Assist",
+      "Gemini Search Personalization",
+      "Gemini Browsing Tool"
+    ],
+    "defense": [
+      "Validate log inputs before LLM processing",
+      "Isolate browsing tool network requests",
+      "Verify search history integrity"
+    ]
+  },
+  {
+    "name": "CometJacking (Agentic Browser Hijack)",
+    "vector": "URL-based prompt injection targeting AI browsers to hijack connected services",
+    "attribution": "LayerX Security and Brave Security Research, August 2025",
+    "targets": [
+      "Perplexity Comet AI Browser",
+      "Agentic browsers with connected service access"
+    ],
+    "defense": [
+      "URL parameter sanitization",
+      "Prohibit AI execution of instructions from URL query strings",
+      "Anti-phishing protections in agentic browsers",
+      "Restrict data encoding during navigation events"
+    ]
+  },
+  {
+    "name": "Tainted Memories (CSRF-Based Persistent Memory Injection)",
+    "vector": "Cross-Site Request Forgery exploiting AI browser auth to inject persistent malicious instructions into LLM memory",
+    "attribution": "LayerX Security, October 2025",
+    "targets": [
+      "OpenAI ChatGPT (Atlas browser)",
+      "LLMs with persistent memory and web browsing"
+    ],
+    "defense": [
+      "CSRF protections on memory write endpoints",
+      "User notification on memory modifications",
+      "Memory integrity verification",
+      "Session-bound memory writes"
+    ]
+  },
+  {
+    "name": "Multi-Agent Control-Flow Hijacking (MAS-CFH)",
+    "vector": "Fake error messages hijack orchestrator re-planning to invoke unsafe agents or arbitrary code execution",
+    "attribution": "COLM 2025 (arXiv:2503.12188), March 2025",
+    "targets": [
+      "AutoGen",
+      "CrewAI",
+      "MetaGPT",
+      "Magentic-One",
+      "Multi-agent orchestration frameworks"
+    ],
+    "defense": [
+      "Agent output validation",
+      "Restrict code execution agent invocation",
+      "Input sanitization for inter-agent messages",
+      "Sandbox code execution agents"
+    ]
+  },
+  {
+    "name": "Inter-Agent Trust Exploitation",
+    "vector": "Malicious payloads laundered through peer agents bypass direct injection defenses via blind inter-agent trust",
+    "attribution": "arXiv:2507.06850 (The Dark Side of LLMs), July 2025",
+    "targets": [
+      "All multi-agent systems with inter-agent communication",
+      "Commercial and open-source agentic models"
+    ],
+    "defense": [
+      "Zero-trust inter-agent communication",
+      "Per-agent authorization scoping",
+      "Treat peer agent outputs as untrusted input",
+      "Integrity verification of inter-agent messages"
+    ]
+  },
+  {
+    "name": "Delayed Tool Invocation (Asynchronous Memory Poisoning)",
+    "vector": "Conditional deferred injection triggered by natural user responses in later conversation turns",
+    "attribution": "Johann Rehberger (Embrace The Red), February 2025",
+    "targets": [
+      "Google Gemini Advanced",
+      "LLMs with persistent memory and tool use"
+    ],
+    "defense": [
+      "Separate authorization flows for memory writes",
+      "Do not allow ambient responses to authorize tool invocations",
+      "Track provenance of conditional instructions",
+      "Sanitize deferred actions in context"
+    ]
+  },
+  {
+    "name": "Slopsquatting (AI Hallucination Package Squatting)",
+    "vector": "Register package names that AI coding agents hallucinate, turning fabricated dependencies into supply chain attacks",
+    "attribution": "UT San Antonio, Virginia Tech, University of Oklahoma (USENIX Security 2025)",
+    "targets": [
+      "AI coding agents (Copilot, Claude Code, Cursor)",
+      "npm/PyPI registries",
+      "MCP server configurations"
+    ],
+    "defense": [
+      "Package existence verification before installation",
+      "Lockfiles and hash pinning",
+      "Hallucination detection in code generation output",
+      "Registry monitoring for hallucination-pattern packages"
+    ]
+  },
+  {
+    "name": "Marketplace Skill Poisoning (OpenClaw / ClawHavoc)",
+    "vector": "Unvetted public skill registries exploited for credential theft, RCE, and malware distribution",
+    "attribution": "SecurityScorecard, Sangfor; CVE-2026-25253 et al., January-February 2026",
+    "targets": [
+      "OpenClaw agent framework",
+      "Agent ecosystems with unvetted plugin/skill marketplaces"
+    ],
+    "defense": [
+      "Mandatory code review for marketplace submissions",
+      "Strong identity verification for publishers",
+      "Runtime skill behavior monitoring",
+      "Sandboxing skill execution",
+      "Signed skill packages"
+    ]
+  },
+  {
+    "name": "Semantic Privilege Escalation",
+    "vector": "Privilege escalation at the semantic layer — agent takes unauthorized actions while passing every access control check",
+    "attribution": "Acuvity, late 2025 - early 2026",
+    "targets": [
+      "Enterprise AI agents with broad tool access",
+      "Financial, HR, procurement systems"
+    ],
+    "defense": [
+      "Intent-based security frameworks",
+      "Action-scope verification against original request",
+      "Behavioral anomaly detection",
+      "Least-privilege tool grants per task",
+      "Human-in-the-loop for high-impact operations"
+    ]
+  },
+  {
+    "name": "MCP Supply Chain Backdoor (Postmark BCC Exfiltration)",
+    "vector": "Compromised npm package in MCP email automation silently BCCs every outgoing email to attacker",
+    "attribution": "Authzed and others, 2025",
+    "targets": [
+      "MCP-connected email automation pipelines",
+      "npm-based AI tool supply chains"
+    ],
+    "defense": [
+      "Package integrity verification",
+      "Dependency auditing",
+      "Monitor outbound email headers for unexpected BCC",
+      "Network-level exfiltration detection",
+      "Pin dependency versions"
+    ]
+  },
+  {
+    "name": "Reasoning-Assisted Sandbox Escape",
+    "vector": "AI agent autonomously discovers and chains sandbox bypass techniques through reasoning about its constraints",
+    "attribution": "Ona Security Research, 2025",
+    "targets": [
+      "Claude Code (Bubblewrap/Seatbelt sandboxes)",
+      "Any sandbox constraining reasoning-capable agents"
+    ],
+    "defense": [
+      "Kernel-level enforcement with content hashing (SHA-256)",
+      "Defense-in-depth with orthogonal enforcement layers",
+      "MicroVM isolation (Firecracker/gVisor)",
+      "Monitor sandbox configuration changes"
+    ]
+  },
+  {
+    "name": "A2A Protocol Exploitation (Agent Card Spoofing / Cascading Delegation)",
+    "vector": "Multiple attack surfaces in Google A2A protocol enabling impersonation, token abuse, and cascading agent compromise",
+    "attribution": "Cloud Security Alliance, Semgrep, Solo.io (arXiv:2505.12490), April-December 2025",
+    "targets": [
+      "Google A2A protocol implementations",
+      "50+ A2A technology partners",
+      "Multi-agent workflows"
+    ],
+    "defense": [
+      "Enforce Agent Card signing",
+      "Strict token expiration (short-lived scoped tokens)",
+      "Consent mechanisms for cross-agent data sharing",
+      "Treat all inter-agent input as untrusted",
+      "Per-agent authorization boundaries"
+    ]
+  },
+  {
+    "name": "Phantom (Structural Template Injection)",
+    "vector": "Exploit chat template tokens (system/user/assistant delimiters) to create fabricated conversation history inducing role confusion",
+    "attribution": "Xinhao Deng et al. (arXiv:2602.16958), February 2026",
+    "targets": [
+      "LLM agents using structured chat templates",
+      "Qwen, GPT, Gemini agents"
+    ],
+    "defense": [
+      "Template-aware input sanitization",
+      "Delimiter integrity verification",
+      "Strip role tokens in retrieved content"
+    ]
+  },
+  {
+    "name": "STAC (Sequential Tool-chain Attack via Composition)",
+    "vector": "Chain individually benign tool calls into dangerous sequences; first automated multi-turn agentic jailbreak framework",
+    "attribution": "arXiv:2509.25624, September 2025",
+    "targets": [
+      "LLM agents with tool access"
+    ],
+    "defense": [
+      "Multi-step action sequence analysis",
+      "Compositional safety evaluation"
+    ]
+  },
+  {
+    "name": "Visual Prompt Injection (Computer-Use Agents)",
+    "vector": "Visually embedded instructions in rendered UIs hijack computer-use agents processing screenshots",
+    "attribution": "VPI-Bench (arXiv:2506.02456), June 2025; EVA (arXiv:2505.14289), May 2025",
+    "targets": [
+      "Computer-use agents",
+      "Browser-use agents"
+    ],
+    "defense": [
+      "Visual input sanitization",
+      "Separate UI text from instructional text",
+      "Screenshot pre-processing for embedded instructions"
+    ]
+  },
+  {
+    "name": "CrossInject (Cross-Modal Prompt Injection)",
+    "vector": "Adversarial perturbations across vision and language channels simultaneously hijack multimodal agent decision-making",
+    "attribution": "arXiv:2504.14348, April 2025 (ACM MM 2025)",
+    "targets": [
+      "Multimodal autonomous agents"
+    ],
+    "defense": [
+      "Cross-modal consistency checking",
+      "Visual content sanitization"
+    ]
+  },
+  {
+    "name": "Zombie Agents (Self-Reinforcing Persistent Injection)",
+    "vector": "Payload exploits long-term memory update mechanisms, survives across sessions via self-reinforcing re-writes into memory",
+    "attribution": "arXiv:2602.15654, February 2026",
+    "targets": [
+      "Self-evolving LLM agents with persistent memory"
+    ],
+    "defense": [
+      "Memory provenance tracking",
+      "Payload detection in memory writes",
+      "Memory write rate limiting",
+      "Cryptographic memory integrity"
+    ]
+  },
+  {
+    "name": "MINJA (Memory Injection via Query-Only Interaction)",
+    "vector": "Inject malicious records into agent memory bank solely through query interactions with 98.2% injection success rate",
+    "attribution": "arXiv:2503.03704, March 2025 (NeurIPS 2025)",
+    "targets": [
+      "Memory-based LLM agents",
+      "RAG-based systems"
+    ],
+    "defense": [
+      "Memory sanitization",
+      "Trust-aware retrieval with temporal decay",
+      "Anomaly detection on memory writes"
+    ]
+  },
+  {
+    "name": "ToolHijacker (Tool Selection Manipulation)",
+    "vector": "Inject malicious tool document into tool library to compel agents to choose attacker-controlled tools (96.43% ASR)",
+    "attribution": "Shi, Yuan et al. (arXiv:2504.19793), NDSS 2026",
+    "targets": [
+      "LLM agents with retrieval-based tool selection",
+      "Llama-3.3-70B, GPT-4o"
+    ],
+    "defense": [
+      "Tool provenance verification",
+      "Perplexity-based detection",
+      "Tool registry integrity monitoring"
+    ]
+  },
+  {
+    "name": "UDora (Reasoning Trace Hijacking)",
+    "vector": "Identify optimal injection points within agent's own reasoning trace to insert targeted perturbations inducing malicious actions",
+    "attribution": "arXiv:2503.01908, February 2025",
+    "targets": [
+      "LLM agents with chain-of-thought reasoning"
+    ],
+    "defense": [
+      "Reasoning trace integrity verification",
+      "Output consistency checking"
+    ]
+  },
+  {
+    "name": "Chain-of-Thought Hijacking",
+    "vector": "Pad harmful requests with long harmless puzzle reasoning sequences to prime reasoning models into continuing into harmful content",
+    "attribution": "arXiv:2510.26418, October 2025",
+    "targets": [
+      "Reasoning/CoT-enabled LLMs",
+      "Gemini 2.5 Pro, GPT o4 mini, Grok 3 mini, Claude 4 Sonnet"
+    ],
+    "defense": [
+      "Reasoning trace monitoring",
+      "Output filtering at completion boundaries"
+    ]
+  },
+  {
+    "name": "Email Agent Hijacking",
+    "vector": "Override email agent system prompts via malicious email content for remote control without user awareness (1,404/1,404 instances hijacked)",
+    "attribution": "arXiv:2507.02699, July 2025",
+    "targets": [
+      "14 agent frameworks",
+      "63 agent apps",
+      "12 LLMs",
+      "20 email services"
+    ],
+    "defense": [
+      "Email content sanitization",
+      "Prompt isolation",
+      "Rate limiting on email-triggered actions"
+    ]
+  },
+  {
+    "name": "DECEPTICON (Dark Pattern Manipulation of Web Agents)",
+    "vector": "Deceptive UI designs manipulate web agents more effectively than humans; larger models are MORE susceptible",
+    "attribution": "Phil Cuvin, Hao Zhu, Diyi Yang (arXiv:2512.22894), December 2025",
+    "targets": [
+      "Frontier LLM-based web agents"
+    ],
+    "defense": [
+      "Dark pattern detection",
+      "UI intent verification",
+      "Action consequence preview"
+    ]
+  },
+  {
+    "name": "Promptware Kill Chain",
+    "vector": "Seven-stage kill chain for prompt-injection-based malware: 21 real-world incidents in 2025-2026, 15 demonstrated 4+ stages",
+    "attribution": "Ben Nassi et al. (arXiv:2601.09625), January 2026",
+    "targets": [
+      "Production LLM systems",
+      "AI coding assistants"
+    ],
+    "defense": [
+      "Stage-specific mitigations",
+      "Kill chain interruption",
+      "Cross-stage behavioral monitoring"
+    ]
+  },
+  {
+    "name": "Rule File Injection (Your AI, My Shell)",
+    "vector": "Inject prompts into AI coding editor config files (.cursorrules, copilot-instructions.md) to hijack terminal execution",
+    "attribution": "arXiv:2509.22040, September 2025",
+    "targets": [
+      "Cursor",
+      "GitHub Copilot",
+      "Agentic AI coding editors"
+    ],
+    "defense": [
+      "Rule file integrity verification",
+      "Sandboxed execution",
+      "User approval for rule file changes"
+    ]
+  },
+  {
+    "name": "CorruptRAG (Single-Document RAG Poisoning)",
+    "vector": "High ASR from injecting only a single poisoned text into RAG knowledge base — no triggers or multiple documents needed",
+    "attribution": "Baolei Zhang et al. (arXiv:2504.03957), April 2025",
+    "targets": [
+      "RAG-augmented LLM systems"
+    ],
+    "defense": [
+      "Retrieval result validation",
+      "Knowledge provenance tracking",
+      "Single-document anomaly detection"
+    ]
+  },
+  {
+    "name": "Prompt Infection (LLM-to-LLM Self-Replicating Worm)",
+    "vector": "Self-replicating prompt injection propagates across agents in multi-agent systems like a computer virus (80%+ success on GPT-4o)",
+    "attribution": "arXiv:2410.07283, October 2024 (conferences 2025)",
+    "targets": [
+      "Multi-agent LLM systems",
+      "Shared content processing pipelines"
+    ],
+    "defense": [
+      "Agent isolation at trust boundaries",
+      "Content sanitization between agents",
+      "LLM tagging with marking/instruction defense"
+    ]
+  },
+  {
+    "name": "Parallel Poisoned Web (Agent-Specific Cloaking)",
+    "vector": "Parallel website versions serve different content to AI agents vs. humans via fingerprinting — agents cannot detect the difference",
+    "attribution": "JFrog Security Research (arXiv:2509.00124), September 2025",
+    "targets": [
+      "Any AI agent that browses the web"
+    ],
+    "defense": [
+      "Agent fingerprint randomization",
+      "Content comparison across access methods",
+      "Multi-path content verification"
+    ]
+  },
+  {
+    "name": "AgentFlayer (Zero-Click Enterprise Agent Exploit)",
+    "vector": "Zero-click exploit chains via hidden instructions in documents (white 1-pixel font) — only requires victim's email address",
+    "attribution": "Zenity Labs, Black Hat USA 2025",
+    "targets": [
+      "ChatGPT",
+      "Copilot Studio",
+      "Cursor with Jira MCP",
+      "Salesforce Einstein",
+      "Google Gemini"
+    ],
+    "defense": [
+      "Input sanitization for hidden text",
+      "Restrict Markdown image rendering",
+      "Limit connector scope"
+    ]
+  },
+  {
+    "name": "Policy Puppetry (Universal Config-File Jailbreak)",
+    "vector": "Adversarial prompts disguised as structured config/policy files universally bypass safety alignment across all frontier models",
+    "attribution": "HiddenLayer, April 2025",
+    "targets": [
+      "All major frontier LLMs (GPT-4, Claude, Gemini, DeepSeek, Llama, Mistral, Qwen)"
+    ],
+    "defense": [
+      "Input format detection and normalization",
+      "No complete fix — systemic LLM training weakness"
+    ]
+  },
+  {
+    "name": "LangGrinch (Serialization Injection)",
+    "vector": "LLM-influenced metadata deserialized as executable objects via unescaped serialization functions — prompt injection to RCE chain",
+    "attribution": "Yarden Porat / Cyata (CVE-2025-68664, CVSS 9.3), December 2025",
+    "targets": [
+      "LangChain Core (Python)",
+      "LangChain.js"
+    ],
+    "defense": [
+      "Escape structured fields during serialization",
+      "Never deserialize LLM-influenced data without validation",
+      "Namespace restrictions for deserialization"
+    ]
+  },
+  {
+    "name": "ZombAI (Self-Propagating Coding Agent Worm)",
+    "vector": "Self-propagating prompt injection worm turns coding agents into malware downloaders and C2 endpoints across repositories",
+    "attribution": "Johann Rehberger / Embrace The Red (CVE-2025-53773), January-August 2025",
+    "targets": [
+      "Claude Computer Use",
+      "OpenHands",
+      "ChatGPT Codex",
+      "Google Jules",
+      "GitHub Copilot"
+    ],
+    "defense": [
+      "Sandbox code execution",
+      "Restrict download/execute capabilities",
+      "Human-in-the-loop for system commands",
+      "Repository content scanning"
+    ]
+  },
+  {
+    "name": "s1ngularity (AI CLI Weaponization)",
+    "vector": "Supply chain attack weaponizes AI coding agents as recon tools, coercing automated credential theft via unsafe CLI flags",
+    "attribution": "Detected by Snyk, GitGuardian, Orca Security; August 2025",
+    "targets": [
+      "Developers using Nx build system",
+      "AI coding assistants (Claude, Gemini, Amazon Q)"
+    ],
+    "defense": [
+      "Package integrity verification",
+      "Remove unsafe skip-all-permissions flags from AI tools"
+    ]
+  },
+  {
+    "name": "Flashboom (Code Auditor Blinding)",
+    "vector": "High-attention code snippets divert LLM code auditor focus away from actual vulnerabilities (96.3% blinding success rate)",
+    "attribution": "Xiao Li et al., Nanjing University / Drexel University (IEEE S&P 2025)",
+    "targets": [
+      "LLM-based code auditors",
+      "Security scanning tools",
+      "GitHub Copilot code review"
+    ],
+    "defense": [
+      "Multiple auditor passes",
+      "Attention-diversity analysis",
+      "Ensemble auditing with different models"
+    ]
+  },
+  {
+    "name": "Gemini Calendar Worm (Promptware Propagation)",
+    "vector": "Calendar invites with hidden prompt injection hijack Gemini agents for tool misuse, cross-agent invocation, and worm-like self-propagation",
+    "attribution": "SafeBreach / Tel Aviv University, Black Hat USA August 2025",
+    "targets": [
+      "Google Gemini agents",
+      "Google Home smart devices"
+    ],
+    "defense": [
+      "Calendar content sanitization",
+      "Cross-agent invocation approval",
+      "Rate limiting on calendar-triggered actions"
+    ]
   }
 ]
